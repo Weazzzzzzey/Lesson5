@@ -244,14 +244,120 @@ namespace MetodinisDarbas
 
     }
 
+    public class Laisvalaikis
+    {
+        public void Panasumas()
+        {
+            List<int> Sarasas = new List<int>();
+            List<int> Panasus = new List<int>();
 
+            Sarasas.Add(1);
+            Sarasas.Add(2);
+            Sarasas.Add(4);
+            Sarasas.Add(3);
+            Sarasas.Add(5);
+            //Sarasas.Add(1);
+            //Sarasas.Add(0);
+            //Sarasas.Add(0);
+
+            Panasus.Add(4);
+            Panasus.Add(3);
+            Panasus.Add(5);
+
+
+            for (int i = 0; i < Sarasas.Count; i++)
+            {
+                if (Sarasas[i] == Panasus[0])
+                {
+                    
+                    if (i != Sarasas.Count-2)
+                    {
+                        if (Sarasas[i + 1] == Panasus[1] && Sarasas[i + 2] == Panasus[2])
+                        {
+                            Console.WriteLine("Panasumas Rastas");
+                        }
+                        else
+                            Console.WriteLine("Atitikmenu nerasta");
+                    }
+                    
+                }
+            }
+
+            Console.ReadLine();
+
+
+        }
+
+        public void DNA()
+        {
+            //aaucg
+            List<string> RNA = new List<string>();
+            RNA.Add("A");
+            RNA.Add("A");
+            RNA.Add("U");
+            RNA.Add("C");
+            RNA.Add("G");
+
+            // G = C
+            // RNA A=U ir DNA A=T
+
+            List<string> DNA = new List<string>();
+            for (int i = 0; i < RNA.Count; i++)
+            {
+                if (RNA[i] == "A")
+                {
+                    DNA.Add("A-T");
+                }
+                else if(RNA[i] == "U")
+                {
+                    DNA.Add("T=A");
+                }
+                else if (RNA[i] == "C")
+                {
+                    DNA.Add("C=G");
+                }
+                else if (RNA[i] == "G")
+                {
+                    DNA.Add("G=C");
+                }
+
+
+            }
+
+            foreach (var item in DNA)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadLine();
+        }
+
+        public void simtasK()
+        {
+            Random rnd = new Random();
+            List<int> simtasT = new List<int>();
+
+            var Watch = System.Diagnostics.Stopwatch.StartNew();
+
+            for (int i = 0; i < 100000; i++)
+            {
+                simtasT.Add(rnd.Next(100000));
+            }
+
+            simtasT.Sort();
+
+            Watch.Stop();
+            var Laikas = Watch.ElapsedMilliseconds;
+            Console.WriteLine("Uzpildymas ir rusiavimas kartu uztrunka {0} Ms", Laikas);
+            Console.ReadLine();
+        }
+
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            Listai L = new Listai();
-            L.PazimiuUzpildymas();
-            L.Pasirinkimai();
+            Laisvalaikis L = new Laisvalaikis();
+            L.simtasK();
         }
     }
 }
